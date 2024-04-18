@@ -13,7 +13,7 @@ class File(BaseModel):
 
 app = FastAPI()
 
-@app.post("/v1/images/generate-embeddings/")
+@app.post("/v1/images/generate-embeddings")
 def generateEmbeddings(file: File):
     fileObj = file.model_dump()
     url = fileObj['url']
