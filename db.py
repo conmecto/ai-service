@@ -37,7 +37,7 @@ def createEmbeddingsTable():
     try: 
         registerVector(conn)
         with conn.cursor() as cursor:
-            cursor.execute('CREATE TABLE IF NOT EXISTS embeddings (id SERIAL PRIMARY KEY,user_id INT NOT NULL,embedding vector(768))')
+            cursor.execute('CREATE TABLE IF NOT EXISTS embeddings (id SERIAL PRIMARY KEY,user_id INT NOT NULL UNIQUE,embedding vector(768),created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(), deleted_at TIMESTAMPTZ DEFAULT NULL,FOREIGN KEY(user_id) REFERENCES setting(user_id))')
         conn.commit()
     except Exception as e:
         print('Create Embeddings Table Error', e)
