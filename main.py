@@ -10,6 +10,7 @@ class File(BaseModel):
     userId: int
     fileName: str
     url: str
+    postIdRef: int
 
 app = FastAPI()
 
@@ -19,9 +20,10 @@ def generateEmbeddings(file: File):
     url = fileObj['url']
     fileName = fileObj['fileName']
     userId  = fileObj['userId']
+    postIdRef = fileObj['postIdRef']
     imagePath = 'temp/' + fileName
     fetchImage(url, imagePath)
-    processImage(imagePath, userId)
+    processImage(imagePath, userId, postIdRef)
     return { "message": "Image added successfully" }
     
             

@@ -19,11 +19,11 @@ def generateEmbeddings(image):
         print('Generate embeddings error', e)
         raise HTTPException(status_code=500, detail=str(e))
 
-def processImage(imagePath, userId):
+def processImage(imagePath, userId, postIdRef):
     try: 
         image = Image.open(imagePath)
         embedding_array = generateEmbeddings(image)
-        insertEmbedding(userId, embedding_array)
+        insertEmbedding(userId, postIdRef, embedding_array)
         if os.path.exists(imagePath):
             os.remove(imagePath)
         else:
@@ -39,6 +39,8 @@ def fetchImage(url, filename):
             with open(filename, 'wb') as f:
                 for chunk in response:
                     f.write(chunk)
+        else:
+            raise Exception("The file does not exist")
     except Exception as e:
         print('Fetch Image failed', e)
         raise HTTPException(status_code=500, detail=str(e))
