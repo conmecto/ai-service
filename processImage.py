@@ -1,7 +1,7 @@
 import requests
 import os
 from fastapi import HTTPException
-from transformers import ViTImageProcessor, ViTModel, image_processing_utils
+from transformers import ViTImageProcessor, ViTModel
 from PIL import Image
 from dbInsert import insertEmbedding
 
