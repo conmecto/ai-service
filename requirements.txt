@@ -1,0 +1,7 @@
+psycopg2
+pgvector
+fastapi
+pydantic
+transformers
+PIL
+requests
