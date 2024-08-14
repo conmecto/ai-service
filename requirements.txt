@@ -5,3 +5,6 @@ pydantic
 transformers
 pillow
 requests
+tensorflow
+torch
+uvicorn
