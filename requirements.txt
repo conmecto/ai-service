@@ -3,5 +3,5 @@ pgvector
 fastapi
 pydantic
 transformers
-PIL
+pillow
 requests
